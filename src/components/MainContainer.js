@@ -10,7 +10,7 @@ function MainContainer() {
   const [filterBy, setFilterBy] = useState("Tech");
 
   useEffect(() => {
-    function fetchStocks() {
+    function fetchStocks() { // this pattern enhances separation of concerns
       return fetch("http://localhost:3001/stocks");
     }
     fetchStocks()
@@ -29,14 +29,14 @@ function MainContainer() {
     setPortfolio(portfolio.filter((stock) => stock.id !== stockObj.id));
   };
 
-  const stocksToDisplay = [...stocks].sort((a, b) => {
+  const stocksToDisplay = [...stocks].sort((a, b) => { // this could also be written as a function which returns the modified array
     if (sortBy === "Alphabetically") {
       return a.name.localeCompare(b.name);
     } else {
       return a.price - b.price;
     }
   })
-  .filter(stock => stock.type === filterBy)
+  .filter(stock => stock.type === filterBy) // js method chaining
 
   return (
     <div>

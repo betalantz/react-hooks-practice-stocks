@@ -6,7 +6,7 @@ function PortfolioContainer({ portfolio, onClickStock }) {
     <Stock
       key={stock.id}
       stock={stock}
-      onClickStock={onClickStock}
+      onClickStock={onClickStock} // we pass down this function with a generic name in props to improve the Stock components reusability
     />
   ));
   return (
